@@ -1,0 +1,47 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.8.1"
+    }
+}
+
+apply plugin: 'io.qameta.allure'
+apply plugin: 'java'
+
+allure {
+    autoconfigure = true
+    version = '2.4.1'
+}
+
+group 'rf.subscribe.qa'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'io.qameta.allure', name: 'allure-java-commons', version: '2.13.0'
+    compile group: 'io.qameta.allure', name: 'allure-attachments', version: '2.13.0'
+    compile group: 'io.qameta.allure', name: 'allure-testng', version: '2.13.0'
+    compile group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.13.0'
+    compile group: 'io.qameta.allure', name: 'allure-selenide', version: '2.13.0'
+    compile group: 'com.codeborne', name: 'selenide', version: '5.5.0'
+    compile group: 'org.testng', name: 'testng', version: '7.0.0'
+    compile group: 'io.rest-assured', name: 'rest-assured', version: '4.1.2'
+    compile group: 'com.jayway.jsonpath', name: 'json-path', version: '2.4.0'
+}
+
+test {
+    useTestNG() {
+        suites 'src/resources/testng.xml'
+    }
+}

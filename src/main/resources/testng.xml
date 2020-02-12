@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Regression" verbose="5" parallel="methods" thread-count="5">
+    <listeners>
+        <listener class-name="com.codeborne.selenide.testng.BrowserPerTest"/>
+    </listeners>
+    <test name="Checkout" >
+        <parameter name="samsungUrl" value="linkName"/>
+        <packages>
+            <package name="tests.checkout"/>
+        </packages>
+    </test>
+</suite>
